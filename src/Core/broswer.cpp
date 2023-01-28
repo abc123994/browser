@@ -1,6 +1,6 @@
 #include"broswer.h"
 #include"web.h"
-#include <QSettings>
+#include"..\Tool\conf.hpp"
 broswer::broswer(QWidget* parent) 
     :QWidget(parent)
     ,m_web_view(new web)
@@ -42,8 +42,8 @@ broswer::broswer(QWidget* parent)
     });
     
     m_web_view->setBroswer(this);
-    QSettings settings("config.ini", QSettings::IniFormat);
-    QString mainpage = settings.value("main/page","https://www.youtube.com").toString();
+
+    QString mainpage = settings.value("main/page", "https://www.youtube.com").toString();
     m_web_view->setUrl(QUrl(mainpage));
     QVBoxLayout* layout = new QVBoxLayout();
     layout->addWidget(m_toolBar);
